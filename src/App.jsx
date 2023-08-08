@@ -16,13 +16,12 @@ export const dabeeoMaps = new Maps();
 /**
  * 지도를 표시하기 위한 지도 정보 가져오기.
  * mapData 또한 가비지 컬렉터에 의해 해제되지 않음.
- * 프로젝트 당 한개의 객체만 존재해야하기 때문에 외부에서 단 한번만 호출되게 사용해야 함.
+ * 지도 당 한개의 객체만 존재해야하기 때문에 외부에서 단 한번만 호출되게 사용해야 함.
  */
 export const mapData = await dabeeoMaps.getMapData({
   clientId: "byQdkBiK4_qbW3lNRooB_Q",
   clientSecret: "2e77b65e659705891c0ca2e66d74e285",
 });
-
 
 function App() {
   const [map, setMap] = useState(null);
@@ -41,7 +40,6 @@ function App() {
     parent.appendChild(mapContainer);
 
     setLoading(true);
-    
 
     const mapOption = {};
     const dabeeoMap = await dabeeoMaps.showMap(
